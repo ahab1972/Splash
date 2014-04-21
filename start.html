@@ -1,0 +1,83 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Startpage</title>
+  <meta name="description" content="Startpage">
+  <meta name="author" content="SitePoint">
+
+  <link rel="stylesheet" href="css/styles.css?v=1.0">
+
+  <!--[if lt IE 9]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  
+  	<style type="text/css"> 
+  #carousel {
+		width: 480px;
+		overflow: hidden;
+	}
+
+	#carousel ul {
+		width: 1920px;
+		padding:0;
+		margin:0;
+	}
+
+	#carousel ul li {
+		width:480px;
+		text-align: center;
+		height:	280px;
+		list-style:	none;
+		float: left;
+}
+
+  </style> <!-- End of CSS -->
+  
+  
+</head>
+
+<body>
+<h1>Tap on your selection</h1></p>
+<a href="http://www.dn.se"><img src="1.jpg" alt="first link" width="300" height="200"></a>
+<a href="http://www.aftonbladet.se"><img src="2.jpg" alt="second link" width="300" height="200"></a>
+<a href="http://www.svd.se"><img src="3.jpg" alt="third link" width="300" height="200"></a>
+<a href="http://www.expressen.se"><img src="4.jpg" alt="fourth link" width="300" height="200"></a>
+
+<h1>And here's a carousel</h1></p>
+	<div id="carousel">
+          <ul>
+            <li><img src="1.jpg" alt="dn" /></li>
+            <li><img src="2.jpg" alt="aftonbladet" /></li>
+            <li><img src="3.jpg" alt="svd" /></li>
+            <li><img src="4.jpg" alt="expressen" /></li>
+          </ul>
+       </div>
+
+<!--Javascript-->
+<!-- http://www.my-html-codes.com/easy-jquery-carousel -->
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
+  <script type="text/javascript">
+  	$(document).ready(function(){
+
+		$("#carousel ul").each(function(){
+			// Set the interval to be 10 seconds
+			var t = setInterval(function(){
+				$("#carousel ul").animate({marginLeft:-480},1000,function(){
+					// This code runs after the animation completes
+					$(this).find("li:last").after($(this).find("li:first"));
+					// Now we've taken out the left-most list item, reset the margin
+					$(this).css({marginLeft:0});
+				})
+			},5000);
+		});
+	});
+  </script>
+
+
+
+  <script src="js/scripts.js"></script>
+</body>
+</html>
